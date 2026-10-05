@@ -1,0 +1,8 @@
+Cloudflare Pages does not require a special config file for this static site.
+
+Use these settings when importing the Git repository:
+Production branch: main
+Build command: (leave blank)
+Build output directory: .
+
+The included _headers file can also be used by compatible static hosting setups.
