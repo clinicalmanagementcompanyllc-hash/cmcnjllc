@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASCP Certification Pathway for IMGs | Clinical Laboratory Scientist Careers | CMCNJ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    window.CMCNJ_CONFIG = {
+      GA4_ID: "G-XXXXXXXXXX",
+      EXPERIMENT_NAME: "homepage_hero_v1"
+    };
+
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      let variant = (params.get("variant") || localStorage.getItem("cmcnj_ab_variant") || "").toUpperCase();
+      if (variant !== "A" && variant !== "B") variant = Math.random() < 0.5 ? "A" : "B";
+      localStorage.setItem("cmcnj_ab_variant", variant);
+
+      const tracking = {};
+      ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function (key) {
+        const value = params.get(key);
+        if (value) {
+          tracking[key] = value.slice(0, 200);
+          localStorage.setItem("cmcnj_" + key, tracking[key]);
+        } else {
+          const saved = localStorage.getItem("cmcnj_" + key);
+          if (saved) tracking[key] = saved;
+        }
+      });
+
+      const referrer = document.referrer && !document.referrer.includes(location.hostname)
+        ? document.referrer.slice(0, 500)
+        : (localStorage.getItem("cmcnj_referrer") || "direct");
+
+      if (document.referrer && !document.referrer.includes(location.hostname)) {
+        localStorage.setItem("cmcnj_referrer", referrer);
+      }
+
+      window.CMCNJ_TRACKING = {
+        variant: variant,
+        experiment: window.CMCNJ_CONFIG.EXPERIMENT_NAME,
+        utm: tracking,
+        referrer: referrer
+      };
+      document.documentElement.dataset.abVariant = variant;
+    })();
+  </script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <style>
+    :root {
+      --primary-blue: #0b6ef6;
+      --primary-purple: #7c3aed;
+      --primary-red: #dc2626;
+      --dark-navy: #0f172a;
+      --light-gray: #f8fafc;
+      --muted-gray: #64748b;
+      --border-gray: #e2e8f0;
+      --white: #ffffff;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 36px;
+      --spacing-2xl: 48px;
+      --shadow-sm: 0 4px 16px rgba(11, 110, 246, 0.08);
+      --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 60px rgba(124, 58, 237, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--dark-navy);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-xl);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--border-gray);
+      padding: var(--spacing-lg) var(--spacing-xl);
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: var(--spacing-lg);
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      color: var(--dark-navy);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      padding: var(--spacing-md);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--light-gray);
+      color: var(--primary-blue);
+    }
+
+    .nav-btn.active {
+      background: var(--primary-blue);
+      color: white;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: var(--spacing-md);
+      line-height: 1.2;
+      color: var(--dark-navy);
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-top: var(--spacing-2xl);
+      margin-bottom: var(--spacing-lg);
+      color: var(--dark-navy);
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: var(--spacing-md);
+      color: var(--dark-navy);
+    }
+
+    .lead {
+      color: var(--muted-gray);
+      font-size: 20px;
+      max-width: 70ch;
+      line-height: 1.7;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--muted-gray);
+      line-height: 1.6;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+    }
+
+    .btn-secondary:hover {
+      background: var(--light-gray);
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: var(--light-gray);
+      padding: var(--spacing-lg);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--primary-blue);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .card-purple {
+      border-left-color: var(--primary-purple);
+    }
+
+    .card-red {
+      border-left-color: var(--primary-red);
+    }
+
+    .grid {
+      display: grid;
+      gap: var(--spacing-lg);
+      width: 100%;
+    }
+
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .grid-4 {
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(11, 110, 246, 0.05), rgba(124, 58, 237, 0.05));
+      padding: var(--spacing-2xl) var(--spacing-xl);
+      border-radius: 20px;
+      margin-bottom: var(--spacing-2xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.1), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      margin-top: var(--spacing-lg);
+    }
+
+    .banner {
+      background: linear-gradient(135deg, var(--dark-navy), rgba(15, 23, 42, 0.8));
+      color: white;
+      padding: var(--spacing-lg);
+      border-radius: 16px;
+      margin-bottom: var(--spacing-lg);
+      border-left: 4px solid var(--primary-red);
+    }
+
+    .banner-title {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: 280px;
+      perspective: 1000px;
+      margin-bottom: var(--spacing-lg);
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card:focus-visible {
+      outline: 3px solid var(--primary-blue);
+      outline-offset: 4px;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--spacing-lg);
+      border-radius: 16px;
+      border: 2px solid var(--border-gray);
+    }
+
+    .flip-card-front {
+      background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+      color: white;
+      font-weight: 700;
+    }
+
+    .flip-card-front .cert-acronym {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .flip-card-front .cert-name {
+      font-size: 12px;
+      opacity: 0.9;
+      font-weight: 500;
+      margin-bottom: var(--spacing-md);
+      max-width: 90%;
+      line-height: 1.3;
+    }
+
+    .flip-card-front .cert-salary {
+      font-size: 18px;
+      margin-top: var(--spacing-md);
+      padding-top: var(--spacing-md);
+      border-top: 2px solid rgba(255, 255, 255, 0.3);
+      font-weight: 600;
+    }
+
+    .flip-card-back {
+      background: var(--light-gray);
+      color: var(--dark-navy);
+      font-size: 13px;
+      line-height: 1.5;
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-back h4 {
+      font-size: 15px;
+      margin-bottom: var(--spacing-sm);
+      color: var(--primary-blue);
+      font-weight: 700;
+    }
+
+    .faq-item {
+      background: var(--light-gray);
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      margin-bottom: var(--spacing-lg);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      background: white;
+      padding: var(--spacing-lg);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: var(--dark-navy);
+      transition: all 0.3s ease;
+      border-bottom: 2px solid var(--border-gray);
+    }
+
+    .faq-question:hover {
+      background: var(--light-gray);
+      color: var(--primary-blue);
+    }
+
+    .faq-question.open {
+      background: var(--light-gray);
+      border-bottom: 2px solid var(--primary-blue);
+    }
+
+    .faq-toggle {
+      font-size: 24px;
+      transition: transform 0.3s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .faq-question.open .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 var(--spacing-lg);
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: var(--light-gray);
+      color: var(--muted-gray);
+      font-size: 14px;
+    }
+
+    .faq-answer.open {
+      padding: var(--spacing-lg);
+      max-height: 1000px;
+    }
+
+    .faq-question h3 {
+      margin: 0;
+      font-size: 18px;
+      flex: 1;
+      text-align: left;
+    }
+
+    /* FORM STYLES */
+    .form-wrapper {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-2xl) 0;
+    }
+
+    .form-group {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--dark-navy);
+    }
+
+    .required::after {
+      content: " *";
+      color: var(--primary-red);
+      font-weight: 700;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="file"],
+    select,
+    textarea {
+      width: 100%;
+      padding: var(--spacing-md);
+      border: 2px solid var(--border-gray);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    input[type="tel"]:focus,
+    input[type="file"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(11, 110, 246, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .input-help {
+      font-size: 12px;
+      color: var(--muted-gray);
+      margin-top: 4px;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .disclaimer-section {
+      background: rgba(15, 23, 42, 0.05);
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      padding: var(--spacing-lg);
+      margin-top: var(--spacing-2xl);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .disclaimer-section h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark-navy);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .disclaimer-section p {
+      font-size: 12px;
+      color: var(--muted-gray);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    footer {
+      background: linear-gradient(135deg, var(--dark-navy), rgba(15, 23, 42, 0.9));
+      color: #cbd5e1;
+      padding: var(--spacing-2xl) var(--spacing-xl);
+      margin-top: var(--spacing-2xl);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .footer-section h4 {
+      color: white;
+      margin-bottom: var(--spacing-md);
+      font-size: 16px;
+    }
+
+    .footer-section p {
+      font-size: 14px;
+      margin: var(--spacing-sm) 0;
+      line-height: 1.8;
+    }
+
+    .footer-section a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--primary-blue);
+    }
+
+    .contact-email-group {
+      margin: var(--spacing-md) 0;
+      padding: var(--spacing-md);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+
+    .contact-email-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-email-link {
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .footer-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin: var(--spacing-2xl) 0;
+      padding-top: var(--spacing-lg);
+    }
+
+    .footer-disclaimer {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.8;
+      margin-top: var(--spacing-lg);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: var(--spacing-lg);
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    #formMessage {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .success-message {
+      background: rgba(34, 197, 94, 0.1);
+      border: 2px solid #22c55e;
+      color: #15803d;
+      padding: var(--spacing-lg);
+      border-radius: 12px;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(11, 110, 246, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--primary-blue);
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .container {
+        padding: var(--spacing-lg);
+      }
+
+      .flip-card {
+        height: 240px;
+      }
+
+      .nav-btn {
+        font-size: 12px;
+        padding: var(--spacing-sm);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<script>
+  (function () {
+    const id = window.CMCNJ_CONFIG && window.CMCNJ_CONFIG.GA4_ID;
+    if (!id || !/^G-[A-Z0-9]+$/i.test(id) || id === "G-XXXXXXXXXX") return;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", id, { anonymize_ip: true });
+
+    const t = window.CMCNJ_TRACKING || {};
+    window.gtag("event", "ab_assignment", {
+      experiment_name: t.experiment || "unknown",
+      ab_variant: t.variant || "unknown",
+      utm_source: (t.utm || {}).utm_source || "direct",
+      utm_medium: (t.utm || {}).utm_medium || "none",
+      utm_campaign: (t.utm || {}).utm_campaign || "none"
+    });
+  })();
+</script>
+
+
+<!-- HEADER -->
+<header>
+  <div class="header-container">
+    <div class="logo" role="button" tabindex="0" onclick="showSection('home', this)" onkeydown="if(event.key==='Enter'||event.key===' ') showSection('home', this)">CMCNJ</div>
+    <nav>
+      <button class="nav-btn active" type="button" onclick="showSection('home', this)">Home</button>
+      <button class="nav-btn" type="button" onclick="showSection('guide', this)">Cert Guide</button>
+      <button class="nav-btn" type="button" onclick="showSection('earnings', this)">Earnings</button>
+      <button class="nav-btn" type="button" onclick="showSection('services', this)">Services</button>
+      <button class="nav-btn" type="button" onclick="showSection('faq', this)">FAQ</button>
+    </nav>
+  </div>
+</header>
+
+<!-- SECTION 1: HOME -->
+<section id="home" class="section active">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-content">
+        <h1 id="heroHeadline">Alternative U.S. Medical Career Pathways for International Physicians</h1>
+        <p class="lead" id="heroLead">If residency is uncertain, delayed, or financially risky — Clinical Laboratory Certification offers a faster, stable, six-figure aligned medical science pathway. We qualify you to apply. Final eligibility rests with ASCP.</p>
+        <div class="cta-group">
+          <button class="btn btn-primary" type="button" id="heroCta" onclick="scrollToForm('hero')">Request Intake</button>
+          <button class="btn btn-secondary" onclick="showSection('earnings')">Compare Earnings</button>
+        </div>
+      </div>
+    </div>
+
+    <h2>Did You Go Unmatched?</h2>
+    <div class="banner">
+      <div class="banner-title">Residency Match Reality</div>
+      <p>Residency Match Rate for IMGs hovers near 50–60%. Many physicians spend multiple cycles reapplying. Each year carries major opportunity cost. You do not need to abandon medicine — you can redirect strategically.</p>
+    </div>
+
+    <h2>Federal Wage Snapshot (BLS 2024)</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Clinical Laboratory Technologists & Technicians</h3>
+        <p style="font-size: 28px; font-weight: 800; color: var(--primary-blue); margin: var(--spacing-md) 0;">$81,220</p>
+        <p class="small">Median Annual Wage | U.S. Bureau of Labor Statistics, 2024</p>
+      </div>
+      <div class="card card-purple">
+        <h3>Physicians & Surgeons</h3>
+        <p style="font-size: 28px; font-weight: 800; color: var(--primary-purple); margin: var(--spacing-md) 0;">$229,300+</p>
+        <p class="small">Median Annual Wage | U.S. Bureau of Labor Statistics, 2024</p>
+      </div>
+    </div>
+
+    <h2>ASCP Certifications We Help With</h2>
+    <p style="font-size: 16px; color: var(--muted-gray); margin-bottom: var(--spacing-lg);">Hover or tap to flip and see full description + average salary</p>
+   
+    <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg); color: var(--primary-blue);">🏆 Highest Volume Certifications</h3>
+    <div class="grid grid-4">
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">MLS</div><div class="cert-name">(Medical Laboratory Scientist)</div><div class="cert-salary">$81,220</div></div><div class="flip-card-back"><h4>Medical Laboratory Scientist</h4><p>Broad laboratory scientist credential. Highest demand, best career flexibility. Performs complex testing across all disciplines.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">MLT</div><div class="cert-name">(Medical Laboratory Technician)</div><div class="cert-salary">$73,450</div></div><div class="flip-card-back"><h4>Medical Laboratory Technician</h4><p>Technical lab testing role. Faster route to employment. Performs routine and specialized testing under supervision.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">PBT</div><div class="cert-name">(Phlebotomy Technician)</div><div class="cert-salary">$36,640</div></div><div class="flip-card-back"><h4>Phlebotomy Technician</h4><p>Blood collection specialist. Entry-level credential with highest hiring volume. Gateway credential to advance to MLS or MLT.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">HT</div><div class="cert-name">(Histotechnician)</div><div class="cert-salary">$45,890</div></div><div class="flip-card-back"><h4>Histotechnician</h4><p>Tissue preparation specialist. Critical for pathology labs. Growing field with excellent advancement to HTL.</p></div></div></div>
+    </div>
+
+    <h3 style="margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-lg); color: var(--primary-purple);">🔬 Additional Certifications</h3>
+    <div class="grid grid-4">
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">BB</div><div class="cert-name">(Blood Banking)</div><div class="cert-salary">$84,560</div></div><div class="flip-card-back"><h4>Scientist in Blood Banking</h4><p>Transfusion medicine and blood product testing. Specialized role in hospital transfusion services.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">C</div><div class="cert-name">(Chemistry)</div><div class="cert-salary">$86,210</div></div><div class="flip-card-back"><h4>Scientist in Chemistry</h4><p>Chemistry analysis specialist. Largest volume of lab tests daily. Hospital backbone department.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">CG</div><div class="cert-name">(Cytogenetics)</div><div class="cert-salary">$89,450</div></div><div class="flip-card-back"><h4>Scientist in Cytogenetics</h4><p>Genetic testing and chromosomal analysis. High-demand specialty for cancer and genetic disorders.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">CT</div><div class="cert-name">(Cytology)</div><div class="cert-salary">$87,340</div></div><div class="flip-card-back"><h4>Cytologist</h4><p>Cell and tissue analysis specialist. Critical for cancer screening (PAP tests). Pathology department expert.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">DLM</div><div class="cert-name">(Lab Management)</div><div class="cert-salary">$105,000+</div></div><div class="flip-card-back"><h4>Diplomat in Laboratory Management</h4><p>Lab director and management expertise. Physician-adjacent role. Required for lab supervisory positions.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">DMLI</div><div class="cert-name">(Lab Immunology)</div><div class="cert-salary">$94,230</div></div><div class="flip-card-back"><h4>Diplomat in Medical Laboratory Immunology</h4><p>Immunology testing and antibody analysis. Advanced certification. High-complexity testing expertise.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">H</div><div class="cert-name">(Hematology)</div><div class="cert-salary">$84,900</div></div><div class="flip-card-back"><h4>Scientist in Hematology</h4><p>Blood cell analysis and clotting disorders. Critical for diagnosis. High-demand specialty.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">M</div><div class="cert-name">(Microbiology)</div><div class="cert-salary">$88,670</div></div><div class="flip-card-back"><h4>Scientist in Microbiology</h4><p>Microbial identification and culture analysis. Infection diagnosis. Critical for disease identification.</p></div></div></div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip certification card"><div class="flip-card-inner"><div class="flip-card-front"><div class="cert-acronym">MB</div><div class="cert-name">(Molecular Biology)</div><div class="cert-salary">$87,650</div></div><div class="flip-card-back"><h4>Scientist in Molecular Biology</h4><p>Molecular diagnostics and genetic testing. PCR and sequencing expertise. Advanced research-driven role.</p></div></div></div>
+    </div>
+
+    <!-- INTAKE FORM -->
+    <h2>Start Your Eligibility Review Today</h2>
+    <p class="lead">Complete this quick form and we'll assess your pathway to ASCP certification within 3-5 business days.</p>
+
+    <div id="formMessage"></div>
+
+    <div class="form-wrapper">
+      <form id="intakeForm" action="https://formspree.io/f/myknylaw" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="ab_variant" id="abVariantField" value="">
+        <input type="hidden" name="experiment_name" id="experimentField" value="">
+        <input type="hidden" name="utm_source" id="utmSourceField" value="">
+        <input type="hidden" name="utm_medium" id="utmMediumField" value="">
+        <input type="hidden" name="utm_campaign" id="utmCampaignField" value="">
+        <input type="hidden" name="landing_referrer" id="referrerField" value="">
+
+        <h3>Section A: Personal Information</h3>
+       
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label for="fullName" class="required">Full Name</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="First and Last Name">
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="required">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 (646) 373-4932">
+          </div>
+
+          <div class="form-group">
+            <label for="age" class="required">Age</label>
+            <input type="number" id="age" name="age" required placeholder="Your age" min="18" max="100">
+          </div>
+        </div>
+
+        <h3>Section B: Professional Background</h3>
+       
+        <div class="form-group">
+          <label for="currentCredential" class="required">Current Credential / Job Title</label>
+          <select id="currentCredential" name="currentCredential" required>
+            <option value="">— Select Your Current Status —</option>
+            <option value="International Medical Graduate (IMG)">International Medical Graduate (IMG)</option>
+            <option value="Foreign Medical Graduate (FMG)">Foreign Medical Graduate (FMG)</option>
+            <option value="Biomedical Scientist">Biomedical Scientist</option>
+            <option value="Lab Technician">Lab Technician</option>
+            <option value="Lab Technologist">Lab Technologist</option>
+            <option value="Other Healthcare Professional">Other Healthcare Professional</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="yearsExperience" class="required">Years of Experience in Current Role</label>
+          <input type="number" id="yearsExperience" name="yearsExperience" required placeholder="e.g., 5" min="0" max="60">
+        </div>
+
+        <div class="form-group">
+          <label for="certPreference" class="required">Target ASCP Certification</label>
+          <select id="certPreference" name="certPreference" required>
+            <option value="">— Select Your Target Certification —</option>
+            <optgroup label="🏆 Highest Volume">
+              <option value="MLS — Medical Laboratory Scientist ($81,220)">MLS — Medical Laboratory Scientist ($81,220)</option>
+              <option value="MLT — Medical Laboratory Technician ($73,450)">MLT — Medical Laboratory Technician ($73,450)</option>
+              <option value="PBT — Phlebotomy Technician ($36,640)">PBT — Phlebotomy Technician ($36,640)</option>
+              <option value="HT — Histotechnician ($45,890)">HT — Histotechnician ($45,890)</option>
+            </optgroup>
+            <optgroup label="🔬 Specialty">
+              <option value="BB — Scientist in Blood Banking ($84,560)">BB — Scientist in Blood Banking ($84,560)</option>
+              <option value="C — Scientist in Chemistry ($86,210)">C — Scientist in Chemistry ($86,210)</option>
+              <option value="H — Scientist in Hematology ($84,900)">H — Scientist in Hematology ($84,900)</option>
+              <option value="M — Scientist in Microbiology ($88,670)">M — Scientist in Microbiology ($88,670)</option>
+              <option value="MB — Scientist in Molecular Biology ($87,650)">MB — Scientist in Molecular Biology ($87,650)</option>
+              <option value="DLM — Diplomat in Lab Management ($105,000+)">DLM — Diplomat in Lab Management ($105,000+)</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <h3>Section C: Immigration Status & USMLE Credentials</h3>
+       
+        <div class="form-group">
+          <label for="immigrationStatus" class="required">Current Immigration Status</label>
+          <select id="immigrationStatus" name="immigrationStatus" required>
+            <option value="">— Select Your Status —</option>
+            <option value="U.S. Citizen">U.S. Citizen</option>
+            <option value="Green Card (Lawful Permanent Resident)">Green Card (Lawful Permanent Resident)</option>
+            <option value="H-1B Visa (Work)">H-1B Visa (Work)</option>
+            <option value="J-1 Visa">J-1 Visa</option>
+            <option value="F-1 Student Visa">F-1 Student Visa</option>
+            <option value="OPT (Optional Practical Training)">OPT (Optional Practical Training)</option>
+            <option value="Other Visa Status">Other Visa Status</option>
+          </select>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label for="usmleStep1">USMLE Step 1 Score (optional)</label>
+            <input type="text" id="usmleStep1" name="usmleStep1" placeholder="e.g., 220 or Pass">
+          </div>
+
+          <div class="form-group">
+            <label for="usmleStep2">USMLE Step 2 CK Score (optional)</label>
+            <input type="text" id="usmleStep2" name="usmleStep2" placeholder="e.g., 235 or Pass">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="usmleStep3">USMLE Step 3 Score (optional)</label>
+          <input type="text" id="usmleStep3" name="usmleStep3" placeholder="e.g., 240 or Pass">
+        </div>
+
+        <h3>Section D: Document Uploads</h3>
+        <p class="small" style="margin-bottom: var(--spacing-lg);">Upload any documents you have. All uploads are optional. Native Formspree file uploads are available on paid Formspree plans; this static site itself does not store uploaded documents.</p>
+
+        <div class="form-group">
+          <label for="resume">📄 Resume / CV (optional)</label>
+          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="form-group">
+          <label for="transcripts">🎓 Transcripts & Diplomas (optional)</label>
+          <input type="file" id="transcripts" name="transcripts" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="form-group">
+          <label for="usmleScores">📊 USMLE Score Reports (optional)</label>
+          <input type="file" id="usmleScores" name="usmleScores" multiple accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="form-group">
+          <label for="ecfmgCert">✅ ECFMG Certificate (optional)</label>
+          <input type="file" id="ecfmgCert" name="ecfmgCert" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="form-group">
+          <label for="foreignEquiv">🌍 Foreign Education Equivalency (optional)</label>
+          <input type="file" id="foreignEquiv" name="foreignEquiv" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="form-group">
+          <label for="immigrationProof">🛂 Proof of Immigration Status (optional)</label>
+          <input type="file" id="immigrationProof" name="immigrationProof" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <h3>Section E: Additional Information</h3>
+
+        <div class="form-group">
+          <label for="additionalInfo">Questions or Missing Documents? (optional)</label>
+          <textarea id="additionalInfo" name="additionalInfo" placeholder="Explain any missing documents or questions about your eligibility..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="referral">How did you hear about CMCNJ? (optional)</label>
+          <select id="referral" name="referral">
+            <option value="">— Select if applicable —</option>
+            <option value="Google Search">Google Search</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Referral from friend/colleague">Referral from friend/colleague</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Professional Network">Professional Network</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="disclaimer-section">
+          <h4>⚠️ Legal Disclaimer & Consent</h4>
+          <p>• I understand CMCNJ provides eligibility consulting only — ASCP BOC makes final certification decisions.</p>
+          <p>• All information I provide is truthful and accurate.</p>
+          <p>• Form submissions are processed by Formspree, and optional website analytics may be collected when configured by CMCNJ.</p>
+          <p>• Submission constitutes acceptance of CMCNJ's Terms of Service and Privacy Policy.</p>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%; margin-top: var(--spacing-lg);">Submit Intake Form</button>
+        <p class="small" style="margin-top: var(--spacing-md); text-align: center;">Form submissions go to <strong>info@cmcnj.org</strong></p>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: CERT GUIDE -->
+<section id="guide" class="section">
+  <div class="container">
+    <h1>ASCP Certification Comparison & Progression Guide</h1>
+    <p class="lead">Understanding certification pathways, requirements, and career progression in clinical laboratory sciences.</p>
+
+    <h2>Career Progression Pathways</h2>
+
+    <h3 style="color: var(--primary-blue); margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md);">🟦 Entry-Level to MLS Path</h3>
+    <div class="card" style="background: rgba(11, 110, 246, 0.05); border-left: 4px solid var(--primary-blue);">
+      <p style="font-size: 14px; line-height: 1.8;"><strong>MLA → MLT → MLS</strong><br/>Medical Laboratory Assistant → Medical Laboratory Technician → Medical Laboratory Scientist<br/><strong>Timeline:</strong> 2-4 years | <strong>Salary:</strong> $32k → $73k → $81k+<br/><strong>Best For:</strong> Fresh graduates or career changers from healthcare backgrounds</p>
+    </div>
+
+    <h3 style="color: var(--primary-purple); margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md);">🟪 Specialty Certifications</h3>
+    <div class="card" style="background: rgba(124, 58, 237, 0.05); border-left: 4px solid var(--primary-purple);">
+      <p style="font-size: 14px; line-height: 1.8;"><strong>Scientist → Specialist/Diplomat</strong><br/>C→SC | H→SH | M→SM | MB→SMB | BB→SBB<br/><strong>Requirements:</strong> Prior Scientist credential + 1-2 years experience<br/><strong>Salary Boost:</strong> +$3k-$8k annually</p>
+    </div>
+
+    <h3 style="color: var(--primary-red); margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md);">🟥 Histology Pathway</h3>
+    <div class="card" style="background: rgba(220, 38, 38, 0.05); border-left: 4px solid var(--primary-red);">
+      <p style="font-size: 14px; line-height: 1.8;"><strong>HT → HTL</strong><br/>Histotechnician → Histotechnologist<br/><strong>Timeline:</strong> 1-2 years | <strong>Salary:</strong> $46k → $52k+</p>
+    </div>
+
+    <h3 style="color: var(--primary-blue); margin-top: var(--spacing-lg); margin-bottom: var(--spacing-md);">🟦 Leadership Pathway</h3>
+    <div class="card" style="background: rgba(11, 110, 246, 0.05); border-left: 4px solid var(--primary-blue);">
+      <p style="font-size: 14px; line-height: 1.8;"><strong>MLS + 5 Years → DLM</strong><br/>Requires MLS credential + 5 years lab supervisory experience<br/><strong>Salary:</strong> $105,000+ (Director level)</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: EARNINGS -->
+<section id="earnings" class="section">
+  <div class="container">
+    <h2>Residency vs Clinical Laboratory Path</h2>
+    <p class="lead">See how clinical lab sciences stacks up financially. Move the sliders to model different scenarios.</p>
+
+    <div style="background: white; border-radius: 16px; padding: var(--spacing-lg); box-shadow: var(--shadow-md); margin-bottom: var(--spacing-lg);">
+      <div id="comparisonChart" style="height: 420px;"></div>
+    </div>
+
+    <h2>Income Projection Calculator</h2>
+    <div class="card">
+      <div class="form-group">
+        <label>Projected Annual Salary</label>
+        <input type="range" min="60000" max="150000" step="5000" value="81220" id="salary" oninput="updateCalculators()">
+        <p style="font-size: 24px; font-weight: 800; color: var(--primary-blue); margin-top: var(--spacing-md);">$<span id="salaryVal">81,220</span></p>
+      </div>
+
+      <hr style="margin: var(--spacing-lg) 0; border: none; border-top: 2px solid var(--border-gray);">
+
+      <div class="form-group">
+        <label>Years Working</label>
+        <input type="range" min="1" max="15" value="5" id="years" oninput="updateCalculators()">
+        <p style="font-size: 20px; font-weight: 700; margin-top: var(--spacing-md);"><span id="yearsVal">5</span> years</p>
+      </div>
+
+      <div class="form-group">
+        <label style="font-size: 18px; font-weight: 700;">Total Projected Earnings:</label>
+        <p style="font-size: 32px; font-weight: 800; color: var(--primary-blue); margin-top: var(--spacing-md);">$<span id="projection">406,100</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <h1>Services & Pricing</h1>
+    <p class="lead">We help internationally trained physicians map their education and documentation toward ASCP eligibility.</p>
+
+    <div class="banner">
+      <div class="banner-title">⚠️ Important Notice</div>
+      <p>We do NOT grant certification. We coordinate documentation and eligibility mapping. Final determination rests solely with ASCP.</p>
+    </div>
+
+    <h2>Service Tiers</h2>
+    <div class="grid grid-2">
+      <div class="card" style="border: 2px solid var(--primary-blue);">
+        <h3>Basic Certification Intake</h3>
+        <p style="font-size: 32px; font-weight: 800; color: var(--primary-blue); margin: var(--spacing-md) 0;">$999</p>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+          <li>✓ Transcript review & degree equivalency</li>
+          <li>✓ Eligibility gap analysis</li>
+          <li>✓ Experience route mapping</li>
+          <li>✓ Supervisor documentation checklist</li>
+          <li>✓ Structured application guidance</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border: 2px solid var(--primary-purple);">
+        <h3>Specialty Certification Intake</h3>
+        <p style="font-size: 32px; font-weight: 800; color: var(--primary-purple); margin: var(--spacing-md) 0;">$1,999</p>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+          <li>✓ Multi-employer documentation coordination</li>
+          <li>✓ Advanced competency mapping</li>
+          <li>✓ Specialty pathway advisory</li>
+          <li>✓ Escalated document audit</li>
+          <li>✓ Structured eligibility file assembly</li>
+          <li>✓ 1-on-1 strategy consultation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: FAQ -->
+<section id="faq" class="section">
+  <div class="container">
+    <h1>Frequently Asked Questions</h1>
+    <p class="lead">Answers to common questions about our services and clinical lab certification pathways.</p>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(event)">
+        <h3>What services does CMCNJ provide for International Medical Graduates?</h3>
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>CMCNJ helps IMGs navigate U.S. healthcare careers through eligibility consultations, Clinical Laboratory Scientist guidance, ASCP certification support, alternative career counseling, and personalized coaching.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(event)">
+        <h3>How can an International Medical Graduate request an eligibility consultation?</h3>
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>Fill out the intake form on the home page. We assess your credentials and recommend U.S. career pathways within 3-5 business days.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(event)">
+        <h3>Can International Medical Graduates become Clinical Laboratory Scientists?</h3>
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes. IMGs can become Clinical Laboratory Scientists by obtaining ASCP certification, gaining U.S. clinical lab experience, meeting state licensure requirements, and optionally enrolling in bridging programs.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(event)">
+        <h3>What are alternative careers for unmatched IMGs?</h3>
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>Alternative careers include Clinical Laboratory Scientist, Physician Assistant, Nursing, Healthcare Administration, Clinical Research Coordinator, and Medical Education/Tutoring.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(event)">
+        <h3>How can FMGs gain U.S. clinical laboratory experience?</h3>
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>Experience can be gained via externships, internships, volunteer research labs, bridging programs, or supervised lab assistant positions.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(event)">
+        <h3>What is the fastest non-residency healthcare career for IMGs?</h3>
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>Fastest pathways include Clinical Laboratory Scientist (6–12 months), Research Coordinator (3–6 months), Medical Education/Tutoring (immediate), and Healthcare Administration (&lt;1 year).</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-grid">
+      <!-- CONTACT SECTION -->
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p><strong>Common Man Consulting LLC (CMCNJ)</strong></p>
+        <p style="margin-top: var(--spacing-md); font-weight: 700; color: var(--primary-purple);">🎉 We're Hiring!</p>
+
+        <div class="contact-email-group">
+          <p class="contact-email-label">💼 Hiring & Recruitment</p>
+          <p class="contact-email-link"><a href="mailto:hiring@cmcnj.org">hiring@cmcnj.org</a></p>
+        </div>
+
+        <div class="contact-email-group">
+          <p class="contact-email-label">💳 Questions About Payments</p>
+          <p class="contact-email-link"><a href="mailto:payments@cmcnj.org">payments@cmcnj.org</a></p>
+        </div>
+
+        <div class="contact-email-group">
+          <p class="contact-email-label">✅ Approved Refunds</p>
+          <p class="contact-email-link"><a href="mailto:refunds@cmcnj.org">refunds@cmcnj.org</a></p>
+        </div>
+
+        <div class="contact-email-group">
+          <p class="contact-email-label">📧 General Information</p>
+          <p class="contact-email-link"><a href="mailto:info@cmcnj.org">info@cmcnj.org</a></p>
+        </div>
+
+        <div class="contact-email-group">
+          <p class="contact-email-label">🆘 General Support</p>
+          <p class="contact-email-link"><a href="mailto:support@cmcnj.org">support@cmcnj.org</a></p>
+        </div>
+
+        <div class="contact-email-group">
+          <p class="contact-email-label">👤 Co-Founder</p>
+          <p class="contact-email-link"><a href="mailto:marc.chad@cmcnj.org">marc.chad@cmcnj.org</a></p>
+        </div>
+
+        <div class="contact-email-group">
+          <p class="contact-email-label">🏢 Co-Founder & Interim CEO</p>
+          <p class="contact-email-link"><a href="mailto:ceo@cmcnj.org">ceo@cmcnj.org</a></p>
+        </div>
+
+        <p style="margin-top: var(--spacing-lg); font-size: 14px;">
+          💬 <strong>Signal/WhatsApp (ONLY contact method):</strong> <a href="https://wa.me/16463734932" target="_blank" rel="noopener noreferrer">646-373-4932</a>
+        </p>
+      </div>
+
+      <!-- ABOUT SECTION -->
+      <div class="footer-section">
+        <h4>About CMCNJ</h4>
+        <p>We help International Medical Graduates (IMGs) and Foreign Medical Graduates (FMGs) navigate U.S. healthcare careers through ASCP certification pathway consulting and strategic credential mapping.</p>
+      </div>
+
+      <!-- RESOURCES SECTION -->
+      <div class="footer-section">
+        <h4>Resources & Links</h4>
+        <p><a href="https://www.ascp.org" target="_blank" rel="noopener noreferrer">ASCP BOC Official Website</a><br/>
+        <a href="https://www.ecfmg.org" target="_blank" rel="noopener noreferrer">ECFMG Certification</a><br/>
+        <a href="https://www.bls.gov" target="_blank" rel="noopener noreferrer">BLS Career Outlook</a><br/>
+        <a href="https://www.nrmp.org" target="_blank" rel="noopener noreferrer">NRMP Match Information</a></p>
+      </div>
+    </div>
+
+    <div class="footer-divider">
+      <h4 style="color: white; margin-bottom: var(--spacing-md);">Legal Disclaimer</h4>
+      <p class="footer-disclaimer">
+        <strong>What We Are NOT:</strong> We are NOT affiliated with ASCP, NAACLS, CLIA, or any academic institution. We do NOT grant certifications — ASCP BOC alone determines certification eligibility. We do NOT guarantee outcomes.<br/><br/>
+        <strong>What We DO:</strong> Provide eligibility consulting, credential mapping, documentation coordination, and career pathway guidance. Final certification decisions rest exclusively with ASCP BOC.<br/><br/>
+        <strong>Data Privacy:</strong> Form submissions are processed by Formspree. This site can also use Google Analytics 4 when CMCNJ supplies a GA4 Measurement ID. Update the Privacy Policy/consent language before enabling analytics where required by applicable law.
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <p style="font-size:11px; opacity:.75;">Experiment links support <code>?variant=A</code> and <code>?variant=B</code>; campaign links can use standard UTM parameters.</p>
+       <p>© 2026 Common Man Consulting LLC. All rights reserved. | ASCP BOC® is a registered trademark of the American Society for Clinical Pathology.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+  function trackEvent(name, params) {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", name, Object.assign({
+      ab_variant: (window.CMCNJ_TRACKING || {}).variant || "unknown",
+      experiment_name: (window.CMCNJ_TRACKING || {}).experiment || "unknown"
+    }, params || {}));
+  }
+
+  function showSection(sectionId, clickedButton) {
+    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+    const target = document.getElementById(sectionId);
+    if (target) target.classList.add('active');
+    const activeButton = clickedButton && clickedButton.classList.contains("nav-btn")
+      ? clickedButton
+      : Array.from(document.querySelectorAll(".nav-btn")).find(btn => (btn.getAttribute("onclick") || "").includes("'" + sectionId + "'"));
+    if (activeButton) activeButton.classList.add("active");
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    trackEvent("section_view", { section_name: sectionId });
+  }
+
+  function scrollToForm(source) {
+    const formWrapper = document.querySelector('.form-wrapper');
+    if (formWrapper) {
+      formWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      trackEvent("cta_click", { cta_source: source || "unknown", cta_name: "request_intake" });
+    }
+  }
+
+  function toggleFAQ(e) {
+    const faqItem = e.currentTarget.closest('.faq-item');
+    const question = faqItem.querySelector('.faq-question');
+    const answer = faqItem.querySelector('.faq-answer');
+    const isOpen = question.classList.toggle('open');
+    answer.classList.toggle('open');
+
+    trackEvent("faq_toggle", {
+      question: question.querySelector("h3") ? question.querySelector("h3").textContent.trim().slice(0, 120) : "unknown",
+      open: isOpen
+    });
+  }
+
+  function updateCalculators() {
+    const salary = Number(document.getElementById('salary').value);
+    const years = Number(document.getElementById('years').value);
+
+    document.getElementById('salaryVal').textContent = new Intl.NumberFormat('en-US').format(salary);
+    document.getElementById('yearsVal').textContent = years;
+    document.getElementById('projection').textContent = new Intl.NumberFormat('en-US').format(salary * years);
+  }
+
+  function applyExperiment() {
+    const variant = (window.CMCNJ_TRACKING || {}).variant || "A";
+    const headline = document.getElementById("heroHeadline");
+    const lead = document.getElementById("heroLead");
+    const cta = document.getElementById("heroCta");
+
+    if (variant === "B") {
+      if (headline) headline.textContent = "Turn Your Medical Training Into a U.S. Laboratory Career Pathway";
+      if (lead) lead.textContent = "A practical alternative for internationally trained physicians when residency is uncertain, delayed, or financially risky. We map your credentials toward possible ASCP pathways; ASCP BOC makes the final eligibility decision.";
+      if (cta) cta.textContent = "Check My Pathway";
+    }
+
+    const t = window.CMCNJ_TRACKING || {};
+    const utm = t.utm || {};
+    const setValue = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.value = value || "";
+    };
+
+    setValue("abVariantField", t.variant);
+    setValue("experimentField", t.experiment);
+    setValue("utmSourceField", utm.utm_source);
+    setValue("utmMediumField", utm.utm_medium);
+    setValue("utmCampaignField", utm.utm_campaign);
+    setValue("referrerField", t.referrer);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyExperiment();
+    updateCalculators();
+
+
+    document.querySelectorAll(".flip-card").forEach(function (card) {
+      const flip = function () {
+        card.classList.toggle("flipped");
+        trackEvent("certification_card_flip", {
+          certification: (card.querySelector(".cert-acronym") || {}).textContent || "unknown",
+          flipped: card.classList.contains("flipped")
+        });
+      };
+      card.addEventListener("click", flip);
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          flip();
+        }
+      });
+    });
+
+    const form = document.getElementById("intakeForm");
+    const formMessage = document.getElementById("formMessage");
+    const submitBtn = document.getElementById("submitBtn");
+
+    if (form) {
+      form.addEventListener("focusin", function () {
+        if (!form.dataset.trackedStart) {
+          form.dataset.trackedStart = "1";
+          trackEvent("form_start", { form_name: "eligibility_intake" });
+        }
+      });
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML = '<span class="loading-spinner"></span>Submitting...';
+        formMessage.innerHTML = "";
+
+        trackEvent("form_submit_attempt", { form_name: "eligibility_intake" });
+
+
+        const fileInputs = Array.from(form.querySelectorAll('input[type="file"]'));
+        let fileCount = 0;
+        for (const input of fileInputs) {
+          for (const file of Array.from(input.files || [])) {
+            fileCount += 1;
+            if (file.size > 25 * 1024 * 1024) {
+              formMessage.innerHTML = '<div class="banner"><div class="banner-title">One of your files is too large</div><p>Each uploaded file must be 25 MB or smaller.</p></div>';
+              return;
+            }
+          }
+        }
+        if (fileCount > 10) {
+          formMessage.innerHTML = '<div class="banner"><div class="banner-title">Too many files</div><p>Please submit no more than 10 files at a time.</p></div>';
+          return;
+        }
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { "Accept": "application/json" }
+          });
+
+          if (!response.ok) throw new Error("Submission failed: " + response.status);
+
+          formMessage.innerHTML = '<div class="success-message"><strong>Thank you.</strong> Your intake was submitted successfully. We will review your information and follow up within 3–5 business days.</div>';
+          form.reset();
+          applyExperiment();
+          trackEvent("generate_lead", { form_name: "eligibility_intake" });
+          window.scrollTo({ top: formMessage.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+        } catch (error) {
+          formMessage.innerHTML = '<div class="banner"><div class="banner-title">Submission could not be completed</div><p>Please try again. If you are uploading documents, confirm your Formspree plan supports file uploads and that the uploaded files are within its current limits.</p></div>';
+          trackEvent("form_submit_error", { form_name: "eligibility_intake" });
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+    }
+
+    document.querySelectorAll("a[href]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        trackEvent("link_click", {
+          link_url: link.href.slice(0, 200),
+          link_text: link.textContent.trim().slice(0, 100)
+        });
+      });
+    });
+
+
+    const chart = document.getElementById("comparisonChart");
+    if (chart && typeof Plotly !== "undefined") {
+      Plotly.newPlot(chart, [{
+        x: ["Clinical Laboratory\nTechnologists & Technicians", "Physicians & Surgeons"],
+        y: [81220, 229300],
+        type: "bar",
+        text: ["$81,220", "$229,300+"],
+        textposition: "auto",
+        hovertemplate: "%{x}<br>$%{y:,.0f}<extra></extra>"
+      }], {
+        title: "Illustrative U.S. Annual Wage Snapshot",
+        yaxis: { title: "Annual wage", tickprefix: "$", tickformat: ",.0f" },
+        margin: { t: 70, r: 20, b: 120, l: 80 },
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        font: { family: "Inter, system-ui, -apple-system, sans-serif" }
+      }, { responsive: true, displayModeBar: false });
+    }
+
+    document.getElementById("earnings")?.addEventListener("change", function (e) {
+      if (e.target && (e.target.id === "salary" || e.target.id === "years")) {
+        trackEvent("calculator_change", { field_name: e.target.id, field_value: e.target.value });
+      }
+    });
+  });
+
+</script>
+
+</body>
+</html>
